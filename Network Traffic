@@ -1,0 +1,30 @@
+# TryHackMe: Network Traffic
+
+**Path:** SOC Level 1
+**Status:** In progress
+
+## Why analyse network traffic?
+Firewalls and devices log DNS queries but not their content.
+Packet inspection shows what is actually being sent.
+
+## Scenario: DNS tunnelling and beaconing
+- Host sends many DNS queries to the same domain, each with a
+  different subdomain
+- TXT queries can carry command and control (C2) instructions
+
+## What DNS logs give you
+- Query and query type
+- Subdomain and top-level domain
+- Source IP and destination IP
+- Timestamp (for building a timeline)
+
+## Investigation steps
+1. Check the domain and IPs in VirusTotal / AbuseIPDB
+2. Identify the host sending the queries
+3. Build a timeline of the suspicious queries
+4. Inspect packet contents to confirm the nature of the traffic
+
+## Key takeaways
+- Logs alone are not enough to draw conclusions
+- Repeated queries with random subdomains are a red flag
+- Packet analysis fills the gaps that logs leave
